@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Innlegg{% endblock %}
+
+{% block body %}
+<div class="innlegg-container">
+    <h1>Innlegg</h1>
+    
+    <!-- Søkeseksjonen -->
+    <input type="text" id="searchBar" placeholder="Søk etter innlegg..." onkeyup="searchPosts()">
+    
+    {% for post in posts|reverse %}
+    <div class="post" data-title="{{ post['title'] }}" data-body="{{ post['body'] }}" data-tags="{{ post['tags'] }}">
+        <h2>{{ post['title'] }}</h2></br>
+        {% if post['image'] %}
+        <div class="post-image">
+            <img class="bildecss" src="{{ url_for('static', filename='images/' + post['image']) }}" alt="{{ post['title'] }}">
+        </div></br>
+        {% endif %}
+        <div class="post-content">
+            <p>{{ post['body'] }}</p></br>
+            <p>Kategori: {{ post['tags'] }}</p></br>
+            <p>Publisert: {{ post['publish_date'] }}</p>
+            {% if session.email and session.email in admins %}
+                <form action="{{ url_for('delete_post', post_id=post['post_id']) }}" method="post">
+                    <button type="submit" class="delete-btn">Slett</button>
+                    <a href="{{ url_for('edit_post', post_id=post['post_id']) }}" class="edit-btn">Rediger</a>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

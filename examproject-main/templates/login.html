@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Logg inn{% endblock %}
+
+{% block body %}
+
+<div class="skjema">
+    {% if session.email %}
+        <h2>Du er innlogget!</h2>
+    {% else %}
+        <h2>Logg inn</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert {{ category }}" role="alert" form="hidden">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    
+        <form id="login_form" action="{{ url_for('login') }}" onsubmit="login();" method="POST">
+            <label for="email">E-post: </label>
+            <input type="text" id="email" name="email" placeholder=" Oppgi e-post adresse" required><br /><br />
+            <label for="password">Passord: </label>
+            <input type="password" id="password" name="password" placeholder=" Skriv inn passordet" required><br /><br />
+            <button type="submit" class="logg_inn" onclick="checkLogin()">Logg inn</button>
+            <br /><br /><br /><br /><p>Ikke bruker? <a href="{{ url_for('registrer') }}" class="bruker">Trykk her</a></p>
+        </form>
+    {% endif %}
+</div>
+
+{% endblock %}

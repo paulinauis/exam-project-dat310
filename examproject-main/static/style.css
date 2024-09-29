@@ -1,0 +1,638 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    padding: 0 3%;
+    background-color: white;
+    position: fixed;
+    z-index: 10000; /* slik at headeren alltid er synlig */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 80px;
+    margin: 15px;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 5px 0;
+}
+
+.meny {
+    display: inline-block;
+    position: relative;
+}
+
+.meny-btn {
+    background-color: white;
+    border: none;
+    font-size: 16px;
+}
+
+.meny-dropdown {
+    display: none;
+    position: absolute;
+    overflow: auto;
+    width: auto;
+    min-width: 87px;
+    background-color: white;
+    padding: 10px;
+}
+  
+.meny:hover .meny-dropdown {
+    display: block;
+}
+
+.meny-dropdown a {
+    padding: 5px;
+    display: block; 
+    margin-bottom: 2px; 
+}
+
+.meny-dropdown a:last-child {
+    margin-bottom: 0; /* fjerne tom plass etter siste link */
+}
+
+.logg_inn, .registrer, .oss {
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.logg_inn {
+    background-color: pink;
+    cursor: pointer;
+    width: 85px;
+}
+
+.logg_inn:hover, .edit-btn:hover, .registrer:hover, .subscribe-btn:hover, .publiser:hover {
+    background-color: lightgreen;
+}
+
+.logg_inn a:visited {
+    color: white;
+}
+
+.registrer {
+    background-color: black;
+    cursor: pointer;
+}
+
+.login {
+    background-color: #ececec;
+    border-bottom: 1px solid #3c3c3c;
+    text-align: right;
+    padding: 5px;
+}
+
+.reiseblogg, .meg {
+    background-color: lightgray;
+    padding: 150px 3% 50px 3%;
+}
+
+#email, #password, #firstname {
+    width: 200px; 
+    height: 25px;
+}
+
+.bruker {
+    font-weight: bold;
+    color: black;
+}
+
+.reiseblogg h1 {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.kolonne {
+    flex: 50%;
+}
+
+.oss {
+    background-color: black;
+    width: 120px;
+    cursor: pointer;
+}
+
+.kolonne img {
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tre-kolonner {
+    color: black;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 3%;
+}
+
+.kol {
+    flex: 100%;
+}
+
+.kol h2 {
+    text-align: center;
+}
+
+.scroll {
+    color: pink;
+    font-size: 20px;
+}
+
+.rest {
+    flex: 100%;
+    position: relative;
+}
+
+.slideshow {
+    margin: auto;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.slideshow img {
+    width: 100%;
+    max-width: 250px;
+    height: 350px;
+}
+
+.slide {
+    display: none; /* Skjuler alle bildene */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.slide:first-child {
+    display: flex; /* Viser det første bildet som default */
+}
+
+.bildenr, .bildetekst {
+    color: pink;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.bildenr {
+    top: 0;
+}
+
+.bildetekst {
+    bottom: 0;
+}
+
+.forrige, .neste {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    color: white; 
+    font-weight: bold;
+    font-size: 20px;
+    background-color: lightgrey;
+}
+
+.forrige {
+    left: 200px;
+}
+
+.neste {
+    right: 200px;
+}
+
+.forrige:hover, .neste:hover {
+    background-color: grey;
+}
+
+/* pc versjon */
+@media (min-width: 768px) {
+    .kol {
+        flex: 33.3%;
+    }
+
+    .rest {
+        flex: 66.7%;
+    }
+
+    .forrige {
+        left: 200px;
+    }
+
+    .neste {
+        right: 200px;
+    }
+}
+
+.kontakt {
+    background-color: lightgrey;
+    padding: 150px 3% 50px 3%;
+    text-align: center;
+}
+
+.tredje-seksjon {
+    background-color: lightgrey;
+    padding: 50px 5%;
+    text-align: center;
+}
+
+.stor-container {
+    padding-right: 10%;
+    padding-left: 10%;
+    display: flex;
+}
+
+.container {
+    background-color: white;
+    flex: 50%;
+}
+
+.container img {
+    width: 100px;
+    height: 150px;
+}
+
+.lite-bilde {
+    flex: 50%;
+    float: left;
+    padding-left: 50px;
+}
+
+.info {
+    flex: 70%;
+}
+
+.admin {
+    color: grey;
+    font-size: 10px;
+}
+
+.liten-container {
+    color: transparent;
+}
+
+.siste {
+    padding: 50px 3% 50px 3%;
+    background-color: pink;
+}
+
+footer {
+    height: 250px;
+    width: 100%;
+    background-color: white;
+    position: relative;
+    bottom: 0;
+    padding: 30px 3%;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.logo-footer {
+    height: 120px;
+}
+
+.footer-list ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin: 10px;
+    float: left;
+    text-align: center;
+    width: 23.5%;
+    list-style-type: none;
+}
+
+.footer-list li a {
+    text-decoration: none;
+    color: black;
+}
+
+#abonner {
+    border-radius: 5px;
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.input {
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 250px;
+}
+
+.subscribe-btn {
+    padding: 10px 5px;
+    font-size: 12px;
+    color: #fff;
+    background-color: pink;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.copyright {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: grey;
+}
+
+.meg {
+    background-color: lightgrey;
+    display: flex;
+}
+
+.to-kolonner-oss {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.sofie, .paulina {
+    flex: 50%;
+    padding: 150px 3% 50px 3%;
+}
+
+.anette, .lisbeth {
+    flex: 50%;
+    padding: 50px 3% 50px 3%;
+}
+
+.sofie h1, .paulina h1, .anette h1, .lisbeth h1 {
+    text-align: center;
+}
+
+.sofie img, .paulina img, .anette img, .lisbeth img {
+    height: 700px;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sofie, .lisbeth {
+    background-color: lightgray;
+}
+
+.paulina, .anette {
+    background-color: pink;
+}
+
+/* mobil versjon */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-list {
+        display: none; /* skjuler hele menyen */
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        text-align: center;
+    }
+
+    .nav-list.active {
+        display: flex;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 15px 0;
+    }
+
+    .to-kolonner-oss {
+        grid-template-columns: 1fr;
+    }
+
+    .paulina {
+        padding: 50px 3% 50px 3%;
+    }
+
+    .anette {
+        background-color: lightgrey;
+    }
+
+    .lisbeth {
+        background-color: pink;
+    }
+}
+
+.skjema {
+    background-color: lightgray;
+    padding: 150px 3% 50px 3%;
+}
+
+.fa-brands {
+    color: pink; 
+    padding-top: 10px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.alert.error {
+    background-color: pink;
+    border-color: red;
+}
+
+.alert.success {
+    background-color: lightgreen;
+    border-color: green;
+}
+
+.innlegg-container {
+    padding: 150px 3% 50px 3%;
+    background-color: lightgrey;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.innlegg-container h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    width: 100%;
+    margin-top: 5%;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b1b1b100;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form input[type="password"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b1b1b100;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+}
+
+.error {
+    color: red;
+}
+
+.publiser {
+    background-color: pink;
+    color: #f2e3e3;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+    padding: 20px;
+    width: 80%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.post-image img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.post-content {
+    text-align: left;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .post {
+        width: 80%;
+    }
+}
+
+@media (min-width: 900px) {
+    .post {
+        width: 60%;
+    }
+}
+
+.bildecss {
+    width: 400px;
+}
+
+#searchBar {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: pink;
+    border: none;
+    border-radius: 5px;
+    width: 30%;
+}
+
+.delete-btn {
+    background-color: #3c3c3c; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    font-size: 12px; 
+}
+
+.delete-btn:hover {
+    background-color: red;
+}
+
+.edit-btn {
+    background-color: #3c3c3c; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    font-size: 12px; 
+    margin-left: 100px;
+    text-decoration: none;
+}

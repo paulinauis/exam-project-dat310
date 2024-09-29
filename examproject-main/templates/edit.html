@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Rediger Innlegg{% endblock %}
+
+{% block body %}
+<div class="innlegg-container">
+    <h1>Rediger innlegg</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.title.label }}<br>
+            {{ form.title(size=150) }}<br>
+            {% for error in form.title.errors %}
+                <span class="error">[{{ error }}]</span>
+            {% endfor %}
+        </div><br>
+        <div>
+            {{ form.body.label }}<br>
+            {{ form.body(rows=10, cols=125) }}<br>
+            {% for error in form.body.errors %}
+                <span class="error">[{{ error }}]</span>
+            {% endfor %}
+        </div><br>
+        <div>
+            {{ form.image.label }}<br>
+            {{ form.image() }}<br>
+            {% for error in form.image.errors %}
+                <span class="error">[{{ error }}]</span>
+            {% endfor %}
+        </div><br>   
+        <div>
+            {{ form.tags.label }}<br>
+            {{ form.tags(size=150) }}<br>
+            {% for error in form.tags.errors %}
+                <span class="error">[{{ error }}]</span>
+            {% endfor %}
+        </div><br>
+        <div>
+            {{ form.submit(class="publiser") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

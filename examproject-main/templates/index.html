@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}Reiseblogg{% endblock %}
+
+{% block body %}
+
+<div class="reiseblogg">
+    <h1>Reiseblogg</h1>
+    <div class="to-kolonner-oss">
+        <div class="kolonne">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies nisl a scelerisque tempor. 
+                Praesent risus tortor, elementum eu sodales non, pulvinar ut mi. Suspendisse quam mauris, imperdiet et ex vitae, auctor varius mi. 
+                Morbi non elit a nunc sodales efficitur. Donec enim magna, dignissim eu leo sed, placerat rutrum est. 
+                Nullam vel magna facilisis nisi accumsan pretium. Etiam elementum egestas enim, nec semper turpis cursus sit amet. 
+                Aenean vitae consequat tortor, et tristique ante.</p>
+                <br>
+            <a href="{{ '/oss' }}"><button class="oss">HVEM VI ER</button></a>
+        </div>
+        <div class="kolonne">
+            <img src="static/images/fargegata.jpeg">
+        </div>
+    </div>
+</div>
+
+<div class="tre-kolonner">
+    <div class="kol">
+        <h2>Dette er oss</h2>
+        <br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies nisl a scelerisque tempor. 
+            Praesent risus tortor, elementum eu sodales non, pulvinar ut mi. Suspendisse quam mauris, imperdiet et ex vitae, auctor varius mi. 
+            Morbi non elit a nunc sodales efficitur. Donec enim magna, dignissim eu leo sed, placerat rutrum est. 
+            Nullam vel magna facilisis nisi accumsan pretium. Etiam elementum egestas enim, nec semper turpis cursus sit amet. 
+            Aenean vitae consequat tortor, et tristique ante.</p>
+        <br>
+        <div class="scroll"><p>Trykk deg videre for å se oss alle da vel!</p></div>
+    </div>
+
+    <div class="rest">
+        <div class="slideshow">
+            <div class="slide">
+                <div class="bildenr"><p>1/4</p></div>
+                <a href="{{ '/sofie' }}"><img src="static/images/sofie.jpeg"></a>
+                <div class="bildetekst"><p>Sofie</p></div>
+            </div>
+
+            <div class="slide">
+                <div class="bildenr"><p>2/4</p></div>
+                <a href="{{ '/paulina' }}"><img src="static/images/paulina.jpeg"></a>
+                <div class="bildetekst"><p>Paulina</p></div>
+            </div>
+
+            <div class="slide">
+                <div class="bildenr"><p>3/4</p></div>
+                <a href="{{ '/anette' }}"><img src="static/images/anette.jpeg"></a>
+                <div class="bildetekst"><p>Anette</p></div>
+            </div>
+
+            <div class="slide">
+                <div class="bildenr"><p>4/4</p></div>
+                <a href="{{ '/lisbeth' }}"><img src="static/images/lisbeth.avif"></a>
+                <div class="bildetekst"><p>Lisbeth</p></div>
+            </div>  
+        </div>
+
+        <a class="forrige" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="neste" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+</div>
+
+<div class="tredje-seksjon">
+    <h2>Hva vi gjør</h2>
+    <br>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies nisl a scelerisque tempor.
+        Praesent risus tortor, elementum eu sodales non, pulvinar ut mi. Suspendisse quam mauris, imperdiet et ex vitae, auctor varius mi.</p>
+    <br>
+    <div class="stor-container">
+        <div class="container">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies nisl a scelerisque tempor.</p>
+            <br>
+            <div class="lite-bilde">
+                <a href="{{ '/sofie' }}"><img src="static/images/sofie.jpeg"></a>
+            </div>
+            <div class="info">
+                <br><br>
+                <p>Sofie</p>
+                <p class="admin">Administrator</p>
+            </div>
+        </div>
+        <div class="liten-container">Hidden</div>
+        <div class="container">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies nisl a scelerisque tempor.</p>
+            <br>
+            <div class="lite-bilde">
+                <a href="{{ '/paulina' }}"><img src="static/images/paulina.jpeg"></a>
+            </div>
+            <div class="info">
+                <br><br>
+                <p>Paulina</p>
+                <p class="admin">Administrator</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="stor-container">
+        <div class="container">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies nisl a scelerisque tempor.</p>
+            <br>
+            <div class="lite-bilde">
+                <a href="{{ '/anette' }}"><img src="static/images/anette.jpeg"></a>
+            </div>
+            <div class="info">
+                <br><br>
+                <p>Anette</p>
+                <p class="admin">Administrator</p>
+            </div>
+        </div>
+        <div class="liten-container">Hidden</div>
+        <div class="container">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies nisl a scelerisque tempor.</p>
+            <br>
+            <div class="lite-bilde">
+                <a href="{{ '/lisbeth' }}"><img src="static/images/lisbeth.avif"></a>
+            </div>
+            <div class="info">
+                <br><br>
+                <p>Lisbeth</p>
+                <p class="admin">Administrator</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="siste">
+    <h1>Siste oppdatering</h1>
+    <br>
+    <div class="to-kolonner-oss">
+        <div class="kolonne">
+            <img src="{{ url_for('static', filename='images/' + latest_post.image) }}">
+        </div>
+        <div class="kolonne">
+            <h2>{{ latest_post.title }}</h2>
+            <br>
+            <p>{{ latest_post.body }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

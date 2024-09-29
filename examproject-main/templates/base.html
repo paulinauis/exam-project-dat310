@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.avif') }}" class="logo"></a>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </div>
+        <ul class="nav-list">
+            <li>{% if session.email %}
+                <p>Velkommen, {{ session.first_name }}!</p></li>
+            <li id="login">
+                <form action="{{ url_for('logout') }}" method="post" id="logout-form">
+                    <button type="submit" class="logg_inn">Logg ut</button>
+                </form>
+                {% else %}
+                <button class="logg_inn"><a href="{{ url_for('login') }}">Logg inn</a></button>
+                {% endif %}
+            </li>
+            <li><a href="{{ url_for('index') }}"><i class="fa fa-home fa-2x fa-brands"></i></a></li>
+            <li>
+                <div class="meny">
+                    <button class="meny-btn">Meny <i class="fa fa-caret-down"></i></button>
+                    <div class="meny-dropdown">
+                        <a href="{{ url_for('index') }}">Hjem</a>
+                        <a href="{{ url_for('innlegg') }}">Innlegg</a>
+                        <a href="{{ url_for('oss') }}">Om oss</a>
+                        <a href="{{ url_for('kontakt') }}">Kontakt</a>
+                    </div>
+                </div>
+            </li>
+            {% if session.email %}
+            {% if session.email in admins %}
+                <li><a href="{{ url_for('create_post') }}">Opprett innlegg</a></li>
+            {% endif %}
+            {% else %}
+            <li><button class="registrer" onclick="window.location.href='/registrer'">REGISTRER</button></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+{% block body %}{% endblock %}
+
+<footer>
+    <div class="footer-list">
+        <ul>
+            <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.avif') }}" class="logo-footer"></a></li>
+            <li>
+                <p><a href="{{ url_for('oss') }}">Om oss</a></p>
+                <br><p><a href="{{ url_for('sofie') }}">Sofie</a></p>
+                <br><p><a href="{{ url_for('paulina') }}">Paulina</a></p>
+                <br><p><a href="{{ url_for('anette') }}">Anette</a></p>
+                <br><p><a href="{{ url_for('lisbeth') }}">Lisbeth</a></p>
+            </li>
+            <li><p>Våre sosiale medier</p>
+                <br>
+                <a href="https://www.facebook.com/"><i class="fa fa-facebook fa-2x fa-brands"></i></a>
+                <br>
+                <a href="https://www.instagram.com/"><i class="fa fa-instagram fa-2x fa-brands"></i></a>
+            </li>
+            <li><p>Subscribe</p><br>
+                <form action="{{ url_for('subscribe') }}" method="post" class="subscribe-form" onsubmit="return checkEmail()">
+                    <input maxlength="50" id="abonner" placeholder="Din e-postadresse" type="email" name="email" class="input">
+                    <button type="submit" class="subscribe-btn">ABONNER</button>
+                </br><span id="emailError" class="error"></span>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <div class="copyright"><p>Copyright © 2024 Reiseblogg.no</p></div>
+</footer>
+</body>
+</html>
